@@ -1,5 +1,9 @@
 # LOGPAT (Logistic Patrol)
-Este proyecto aborda la automatización de un almacén logístico empleando un robot móvil SUMMIT-XL STEEL. La finalidad principal es que el robot pueda, de forma autónoma, registrar la entrada de nuevos paquetes, patrullar el entorno para monitorizar el estado de los productos almacenados y, finalmente, retornar a su base de carga. De este modo, se optimiza la gestión de inventarios, fusionando la potencia de la robótica móvil y la comunicación en tiempo real con el sistema maestro de la empresa.
+Este proyecto aborda la automatización de un almacén logístico empleando un robot móvil SUMMIT-XL STEEL. 
+
+![image](https://github.com/user-attachments/assets/fa293287-b242-4665-8197-886c804cda9c)
+
+La finalidad principal es que el robot pueda, de forma autónoma, registrar la entrada de nuevos paquetes, patrullar el entorno para monitorizar el estado de los productos almacenados y, finalmente, retornar a su base de carga. De este modo, se optimiza la gestión de inventarios, fusionando la potencia de la robótica móvil y la comunicación en tiempo real con el sistema maestro de la empresa.
 
 La iniciativa se desarrolló íntegramente sobre el framework ROS, simulando la operación en un entorno virtual de Gazebo. Aun así, cada parte del flujo se concibió para llevarse posteriormente a un sistema real sin grandes complicaciones. Durante el patrullaje, se incluyen capturas de datos de sensores (temperatura, humedad), recibidos a través de beacons BLE instalados en cada paquete, y la información generada se almacena y gestiona en una base de datos Supabase, que facilita la actualización y consulta de registros desde cualquier nodo del sistema.
 
@@ -16,7 +20,11 @@ Para controlar el flujo de tareas, se diseñó una máquina de estados que asegu
 
 5. Al terminar el recorrido, retorna de nuevo a la base y espera un nuevo ciclo de órdenes.
 
+![image](https://github.com/user-attachments/assets/440b8f15-ba14-4635-bce5-763486ab7ab0)
+
 La aproximación se diseñó para un entorno logístico que exige inmediatez y precisión en la detección de incidencias. Gracias a los beacons BLE, se pueden leer datos en tiempo real y, de existir un valor fuera de rango, notificar al sistema maestro o al personal de almacén. Esto garantiza un control preventivo, evitando la distribución de mercancía dañada.
+
+![image1](https://github.com/user-attachments/assets/71e12f5b-65c6-42db-8804-913a17ce8517)![image](https://github.com/user-attachments/assets/94742cd2-1938-49bb-a43c-479749829261)
 
 ## Elementos Destacados
 ### Simulación en Gazebo
@@ -60,3 +68,21 @@ https://www.youtube.com/watch?v=PkZ8wWkjVw4
 
 ##
 Este proyecto, al unir la robustez de la navegación autónoma con la integración en la nube de Supabase, persigue un flujo logístico más inteligente y seguro, donde cada paquete se registra y monitoriza en tiempo real sin intervención manual permanente. De este modo, se concreta una telemetría continua que, combinada con la capacidad de corrección en caso de incidencias, mejora la calidad y fiabilidad de la cadena de suministros.
+
+## Cargar Docker
+
+Se ha preparado una imagen de Docker para unificar librerías y facilitar la puesta en marcha. Para cargar la imagen del Docker y lanzar el contenedor, ejecuta:
+```
+docker run -it --name=proyecto_robots_moviles \
+  --network host \
+  -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  --privileged \
+  proyecto_robots_moviles:1.0
+```
+En caso de que necesites abrir más terminales dentro del contenedor, es suficiente con:
+```
+docker exec -it proyecto_robots_moviles /bin/bash
+```
+
+De este modo, podrás lanzar nodos de ROS en diferentes terminales sin cerrar el contenedor principal.

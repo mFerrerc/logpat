@@ -71,6 +71,12 @@ Este proyecto, al unir la robustez de la navegación autónoma con la integraci�
 
 ## Cargar Docker
 
+Navega hasta el directorio donde se encuentra el archivo Dockerfile. Ejecuta el
+siguiente comando en la terminal:
+```
+docker load -i proyecto_robots_moviles_v1.tar
+```
+
 Se ha preparado una imagen de Docker para unificar librerías y facilitar la puesta en marcha. Para cargar la imagen del Docker y lanzar el contenedor, ejecuta:
 ```
 docker run -it --name=proyecto_robots_moviles \
@@ -78,7 +84,7 @@ docker run -it --name=proyecto_robots_moviles \
   -e DISPLAY=$DISPLAY \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   --privileged \
-  proyecto_robots_moviles:1.0
+  proyecto_robots_moviles_v1
 ```
 En caso de que necesites abrir más terminales dentro del contenedor, es suficiente con:
 ```

@@ -71,8 +71,11 @@ Este proyecto, al unir la robustez de la navegación autónoma con la integraci�
 
 ## Cargar Docker
 
-Navega hasta el directorio donde se encuentra el archivo Dockerfile. Ejecuta el
-siguiente comando en la terminal:
+Descarga la imagen del docker desde el siguiente enlace:
+
+https://drive.google.com/file/d/1Fk4kl1tmf7Ffk4IZ4jpoyihOxQSJRrY5/view
+
+Ejecuta el siguiente comando en la terminal:
 ```
 docker load -i proyecto_robots_moviles_v1.tar
 ```

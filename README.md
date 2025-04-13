@@ -32,21 +32,21 @@ Cada paquete cuenta con un pequeño beacon BLE que emite datos de temperatura y 
 La base de datos empleada está alojada en la nube mediante Supabase, que ofrece servicios basados en PostgreSQL con una API sencilla para altas, bajas y modificaciones de registros. Con ello, cualquier nodo ROS puede crear entradas nuevas o actualizar campos existentes en el inventario, sin necesidad de instalar un sistema de bases de datos complejo de manera local. Además, el proyecto utiliza diversos scripts para gestionar, corregir y visualizar la información, así como para eliminar marcadores de error cuando el problema ha sido solventado.
 
 ### Tecnologías Empleadas
-- * Robot Operating System (ROS): * Orquestación de nodos, comunicación de tópicos y acciones de navegación.
+- **Robot Operating System (ROS):** Orquestación de nodos, comunicación de tópicos y acciones de navegación.
 
-- * Gazebo + RViz: * Entorno de simulación realista y visualización en 3D de la escena y los sensores.
+- **Gazebo + RViz:** Entorno de simulación realista y visualización en 3D de la escena y los sensores.
 
-- * OpenCV: * Preprocesado de imágenes (recorte y limpieza) para luego aplicar el OCR.
+- **OpenCV:** Preprocesado de imágenes (recorte y limpieza) para luego aplicar el OCR.
 
-- * Tesseract OCR: * Extracción de texto relevante de las etiquetas.
+- **Tesseract OCR:** Extracción de texto relevante de las etiquetas.
 
-- * Beacons BLE (simulados): * Generación de paquetes de datos en formato hexadecimal, probando la lectura de sensores (temperatura, humedad).
+- **Beacons BLE (simulados):** Generación de paquetes de datos en formato hexadecimal, probando la lectura de sensores (temperatura, humedad).
 
-- * Supabase (PostgreSQL): * Almacenamiento en la nube de la información de cada lote y consulta concurrente desde distintos nodos.
+- **Supabase (PostgreSQL):** Almacenamiento en la nube de la información de cada lote y consulta concurrente desde distintos nodos.
 
-- * Python: * Desarrollo de los nodos ROS, scripts de OCR y enlace con la base de datos.
+- **Python:** Desarrollo de los nodos ROS, scripts de OCR y enlace con la base de datos.
 
-- * Docker / Conda (opcional): * Facilitan la consistencia de entornos, especialmente por las versiones de Python y librerías (psycopg2, supabase-py, etc.).
+- **Docker / Conda (opcional):** Facilitan la consistencia de entornos, especialmente por las versiones de Python y librerías (psycopg2, supabase-py, etc.).
 
 ## Cómo Funciona la Aplicación
 A un nivel alto, el robot escucha órdenes de acción (p. ej., “etiquetado” o “patrulla”), transicionando por los estados de su máquina de estados. Para registrar nuevos paquetes, se posiciona en el área de etiquetado y ejecuta sus scripts de OCR, enviando la información obtenida a la base de datos. Si se selecciona modo “patrulla”, recorre la secuencia de waypoints en Gazebo, simulando la lectura de beacons BLE. Si se detectan errores (por ejemplo, temperatura fuera de rango), se actualiza el campo “estado” del producto en la base de datos y se publican marcadores en RViz. Finalizada la patrulla, el robot retorna a base, quedando listo para repetir el ciclo cuando se precise.

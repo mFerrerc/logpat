@@ -24,7 +24,7 @@ Para controlar el flujo de tareas, se diseñó una máquina de estados que asegu
 
 La aproximación se diseñó para un entorno logístico que exige inmediatez y precisión en la detección de incidencias. Gracias a los beacons BLE, se pueden leer datos en tiempo real y, de existir un valor fuera de rango, notificar al sistema maestro o al personal de almacén. Esto garantiza un control preventivo, evitando la distribución de mercancía dañada.
 
-![image1](https://github.com/user-attachments/assets/71e12f5b-65c6-42db-8804-913a17ce8517)[image](https://github.com/user-attachments/assets/94742cd2-1938-49bb-a43c-479749829261)
+![image1](https://github.com/user-attachments/assets/71e12f5b-65c6-42db-8804-913a17ce8517)![image](https://github.com/user-attachments/assets/94742cd2-1938-49bb-a43c-479749829261)
 
 ## Elementos Destacados
 ### Simulación en Gazebo

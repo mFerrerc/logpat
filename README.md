@@ -1,3 +1,5 @@
+<div align="justify">
+
 # LOGPAT (Logistic Patrol)
 Este proyecto aborda la automatización de un almacén logístico empleando un robot móvil SUMMIT-XL STEEL. 
 
@@ -95,3 +97,5 @@ docker exec -it proyecto_robots_moviles /bin/bash
 ```
 
 De este modo, podrás lanzar nodos de ROS en diferentes terminales sin cerrar el contenedor principal.
+
+</div>

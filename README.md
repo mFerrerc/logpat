@@ -1,9 +1,11 @@
 <div align="justify">
 
-# LOGPAT (Logistic Patrol)
-Este proyecto aborda la automatización de un almacén logístico empleando un robot móvil SUMMIT-XL STEEL. 
+# LOGPAT (Logistic Patrol)  
+Este proyecto aborda la automatización de un almacén logístico empleando un robot móvil SUMMIT-XL STEEL.  
 
-![image](https://github.com/user-attachments/assets/fa293287-b242-4665-8197-886c804cda9c)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/fa293287-b242-4665-8197-886c804cda9c" />
+</p>
 
 La finalidad principal es que el robot pueda, de forma autónoma, registrar la entrada de nuevos paquetes, patrullar el entorno para monitorizar el estado de los productos almacenados y, finalmente, retornar a su base de carga. De este modo, se optimiza la gestión de inventarios, fusionando la potencia de la robótica móvil y la comunicación en tiempo real con el sistema maestro de la empresa.
 
@@ -13,22 +15,26 @@ La iniciativa se desarrolló íntegramente sobre el framework ROS, simulando la 
 Para controlar el flujo de tareas, se diseñó una máquina de estados que asegura una ejecución clara y ordenada:
 
 1. El robot parte desde su base y espera el comando correspondiente.
-
 2. Si se indica “etiquetado”, se dirige a la zona de recepción de mercancías y procede a leer las etiquetas (OCR), registrándolas en la base de datos.
-
 3. Tras concluir la lectura, el robot vuelve a la base o, si recibe la orden, inicia una patrulla por las diferentes secciones del almacén.
-
 4. Durante la patrulla, el robot comprueba los datos enviados por los beacons BLE (temperatura y humedad) para detectar anomalías en los productos.
-
 5. Al terminar el recorrido, retorna de nuevo a la base y espera un nuevo ciclo de órdenes.
 
-![image](https://github.com/user-attachments/assets/440b8f15-ba14-4635-bce5-763486ab7ab0)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/440b8f15-ba14-4635-bce5-763486ab7ab0" />
+</p>
 
 La aproximación se diseñó para un entorno logístico que exige inmediatez y precisión en la detección de incidencias. Gracias a los beacons BLE, se pueden leer datos en tiempo real y, de existir un valor fuera de rango, notificar al sistema maestro o al personal de almacén. Esto garantiza un control preventivo, evitando la distribución de mercancía dañada.
 
-![image1](https://github.com/user-attachments/assets/71e12f5b-65c6-42db-8804-913a17ce8517)![image](https://github.com/user-attachments/assets/94742cd2-1938-49bb-a43c-479749829261)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/71e12f5b-65c6-42db-8804-913a17ce8517" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/94742cd2-1938-49bb-a43c-479749829261" />
+</p>
 
 ## Elementos Destacados
+
 ### Simulación en Gazebo
 Para comprobar la viabilidad del proyecto, se construyó un entorno virtual que refleja un almacén real, con sus estanterías y áreas de almacenamiento. El robot SUMMIT-XL STEEL, así como los objetos que lleva cada beacon, se añadieron al mundo de Gazebo. Con esta aproximación, se validaron las rutas de patrulla, los movimientos de vuelta a la base y las lecturas de etiquetas sin necesidad de arriesgar o retrasar la implantación por espera de componentes físicos.
 
@@ -43,19 +49,12 @@ La base de datos empleada está alojada en la nube mediante Supabase, que ofrece
 
 ### Tecnologías Empleadas
 - **Robot Operating System (ROS):** Orquestación de nodos, comunicación de tópicos y acciones de navegación.
-
 - **Gazebo + RViz:** Entorno de simulación realista y visualización en 3D de la escena y los sensores.
-
 - **OpenCV:** Preprocesado de imágenes (recorte y limpieza) para luego aplicar el OCR.
-
 - **Tesseract OCR:** Extracción de texto relevante de las etiquetas.
-
 - **Beacons BLE (simulados):** Generación de paquetes de datos en formato hexadecimal, probando la lectura de sensores (temperatura, humedad).
-
 - **Supabase (PostgreSQL):** Almacenamiento en la nube de la información de cada lote y consulta concurrente desde distintos nodos.
-
 - **Python:** Desarrollo de los nodos ROS, scripts de OCR y enlace con la base de datos.
-
 - **Docker / Conda (opcional):** Facilitan la consistencia de entornos, especialmente por las versiones de Python y librerías (psycopg2, supabase-py, etc.).
 
 ## Cómo Funciona la Aplicación
@@ -68,7 +67,6 @@ En el siguiente enlace se ilustra el comportamiento global de la aplicación, ab
 
 https://www.youtube.com/watch?v=PkZ8wWkjVw4
 
-##
 Este proyecto, al unir la robustez de la navegación autónoma con la integración en la nube de Supabase, persigue un flujo logístico más inteligente y seguro, donde cada paquete se registra y monitoriza en tiempo real sin intervención manual permanente. De este modo, se concreta una telemetría continua que, combinada con la capacidad de corrección en caso de incidencias, mejora la calidad y fiabilidad de la cadena de suministros.
 
 ## Cargar Docker
@@ -91,6 +89,7 @@ docker run -it --name=proyecto_robots_moviles \
   --privileged \
   proyecto_robots_moviles_v1
 ```
+
 En caso de que necesites abrir más terminales dentro del contenedor, es suficiente con:
 ```
 docker exec -it proyecto_robots_moviles /bin/bash
